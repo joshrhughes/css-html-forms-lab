@@ -84,7 +84,7 @@
 				    	<input id="noun-2" name="noun-2">
 					</div>
 					<div class="row formGroup">
-				    	<input type="submit">
+				    	<input id="submit" type="submit">
 				    </div>
 				    
 			    </div>
@@ -96,6 +96,20 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 
+// 		$().ready(function(){
+// 			$('#submit').click(function(){
+// 			localStorage.setItem("name", $("#name"));
+// 			});
+// 		});
+
+
+// 			var $name = $("#name").val();
+// 			var $verb1 = $("#verb-1").val();
+// 			var $mission = $("#mission").val();
+// 			var $radio = $("#radioButtons").val();
+// 			var $noun1 = $("#noun-1").val();
+// 			var $checkboxes = $("#checkboxes").val();
+// 			var $noun2 = $("#noun-2").val();
 		var main = $('#main');
 		function makeResults() {
 
@@ -106,14 +120,38 @@
 			// results.innerHTML = '<h1>' + 'A true story:' + '</h1>';
 			// results.className = 'container results';
 			// main.appendChild(results);
-		};
+
+		}
 
 		$("form").on("submit", function(event){
 
 		    // Stop the form from submitting
-
+		    event.preventDefault();
 	    	// Run the 'makeResults' function seen above
 
+	    	var $name = $("#name").val();
+			var $verb1 = $("#verb-1").val();
+			var $mission = $("#mission").val();
+			var $radio = $("#radio").val();
+			var $noun1 = $("#noun-1").val();
+			var $checkboxes = $("#checkboxes").val();
+			var $noun2 = $("#noun-2").val();
+			
+
+			localStorage.setItem("name", $name);
+			localStorage.setItem("verb1", $verb1);
+			localStorage.setItem("mission", $mission);
+			localStorage.setItem("radio", $radio);
+			localStorage.setItem("noun1", $noun1);
+			localStorage.setItem("checkboxes", $checkboxes);
+			localStorage.setItem("noun2", $noun2);
+		
+
+		console.log($name + $radio +"Hello" + $("#name").val());
+
+
+
+	    	//makeResults();
 	    	/*
 			
 				For each value entered into a form input, add the input to the corresponding sentence, then append the text into the results section:

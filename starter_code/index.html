@@ -96,20 +96,11 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 
-// 		$().ready(function(){
-// 			$('#submit').click(function(){
-// 			localStorage.setItem("name", $("#name"));
-// 			});
-// 		});
+		$().ready(function(){
+			console.log("ready!");
+		});
 
 
-// 			var $name = $("#name").val();
-// 			var $verb1 = $("#verb-1").val();
-// 			var $mission = $("#mission").val();
-// 			var $radio = $("#radioButtons").val();
-// 			var $noun1 = $("#noun-1").val();
-// 			var $checkboxes = $("#checkboxes").val();
-// 			var $noun2 = $("#noun-2").val();
 		var main = $('#main');
 		function makeResults() {
 
@@ -128,15 +119,17 @@
 		    // Stop the form from submitting
 		    event.preventDefault();
 	    	// Run the 'makeResults' function seen above
+	    	makeResults();
 
+			// Var for input values
 	    	var $name = $("#name").val();
-			var $verb1 = $("#verb-1").val();
+			var $verb1 = $("#verb-1 option:selected").val();
 			var $mission = $("#mission").val();
 			var $radio = $("#radio").val();
 			var $noun1 = $("#noun-1").val();
 			var $checkboxes = $("#checkboxes").val();
 			var $noun2 = $("#noun-2").val();
-			
+			//Struggeling to get radio and checkbockes
 
 			localStorage.setItem("name", $name);
 			localStorage.setItem("verb1", $verb1);
@@ -167,6 +160,14 @@
 				"In the end, their success can be contributed entirely to their " + ADJECTIVE2[list each one checked, comma-separated] + NOUN2."
 
 	    	*/ 
+
+
+	    	$('.container.results').append("<p>Once upon a time there was a Developer named " + $name + ".</p>");
+			$('.container.results').append("<p>" + $name + " came to General Assembly to " + $verb1 + " the great mountain of programming knowledge.</p>");
+			$('.container.results').append("<p>" + $mission + ", " + $name + " shouted.</p>");
+			$('.container.results').append("<p>Though " + $radio + ", " + $name + " was able to overcome all obstacles with the power of their " + $noun1 + ".<p>");
+			$('.container.results').append("<p>In the end, their success can be contributed entirely to their " + $checkboxes + " " + $noun2 + ".<p>");
+
 		});
 	</script>
 

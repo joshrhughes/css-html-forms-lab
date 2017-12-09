@@ -40,7 +40,7 @@ h1{
 
 .formSection, .form{
 	float: left;
-	margin: 10px;
+	margin-right: 10px;
 	border-radius: 5px;
 	
 }
@@ -126,11 +126,15 @@ textarea{
 	
 }
 
+#submit:hover {
+	background: rgba(39, 208, 127,1);
+}
+
 
 
 #radio1, #radio2, #radio3, #check1, #check2, #check3{
 	float:right;
-	clear: both;
+	/*clear: both;*/
 	
 }
 /*-------- Results Styles --------*/
@@ -145,10 +149,10 @@ textarea{
 */
 
 .results {
+	clear: both;
 	background: #C8DBB3;
 	width: fill;
 	max-width: 500px;
-	clear: both;
 	padding: 10px;
 	display: inline-block;
 }

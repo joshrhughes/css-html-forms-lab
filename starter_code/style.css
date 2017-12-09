@@ -6,35 +6,63 @@
 }
 
 /* 
-	Use Google Fonts to make all of the text Proza Libre.
+	Use Google Fonts to make all of the text Proza Libre. *
 
-	Make the Title twice as large as the body text, bold, and give it some nice margin.
+	Make the Title twice as large as the body text, bold, and give it some nice margin. *
 */
+
+body{
+	font-family: 'Proza Libre', sans-serif;
+}
+
+h1{
+	font-size: 30px;
+	margin-left: 10px;
+}
 
 /*-------- Main Styles --------*/
 
 /* 
-	Make the main container the full width of the page.
+	Make the main container the full width of the page. *
 
-	Make the two inner containers (the form and the results) float side by side, on the left side of the screen.
+	Make the two inner containers (the form and the results) float side by side, on the left side of the screen. *
 
-	Every container, form, input, and button should have rounded corners.
+	Every container, form, input, and button should have rounded corners. *
 */
+
+
+#main {
+	height: 800px;
+	width: 100%;
+	clear: both;
+	border-radius: 5px;
+}
+
+.formSection, .form{
+	float: left;
+	margin: 10px;
+	border-radius: 5px;
+	
+}
+input, form, button, .results{ 
+	border-radius: 5px;
+}
+
 
 /*-------- Form Styles --------*/
 
 
 /* 
 
-	Make sure the form itself fills the width of whatever container its in, but no larger than 500px.
+	Make sure the form itself fills the width of whatever container its in, but no larger than 500px.*
 	
-	The background should be #E3E6EC, and it should align to the middle of its container.
+	The background should be #E3E6EC, and it should align to the middle of its container.*
 	
-	Every element should have nice, even padding or margin around it.
+	Every element should have nice, even padding or margin around it.*
 
-	.row elements should be spaced out so they're not touching.
+	.row elements should be spaced out so they're not touching.*
 
-	.formGroup elements should fill the width of their container, and be inline-block.
+	.formGroup elements should fill the width of their container, and be inline-block.*
 
 	The labels inside of .formGroup should be on their own line above form options, fill the width of their container, and have top/bottom padding.
 
@@ -44,9 +72,9 @@
 
 	Text inputs, submit buttons, and select boxes should all be at least 48px tall. The should have 14px of padding around their text. 
 
-	Textareas should be at least 100px tall.
+	Textareas should be at least 100px tall. *
 
-	Text inputs, select boxes, and textareas should have a 1px border that's #CCC, and none of the default shadows.
+	Text inputs, select boxes, and textareas should have a 1px border that's #CCC, and none of the default shadows.*
 
 	The submit button should float to the right, be bolded, and only be as wide as the text makes it.
 
@@ -54,16 +82,78 @@
 	
 	
 */
+form{
+	min-width: 400px;
+	max-width: 500px;
+	background-color: #E3E6EC;
+	display: inline-block;
+
+}
+
+.row {
+	margin: 0 auto;
+}
 
 
+label {
+	color: black;
+	margin: 5px;
+}
+
+input, select, textarea{
+	margin: 5px 10px 5px 10px;
+	border-radius: 5px;
+	border: 1px solid #CCC;
+	box-shadow: none;
+	width: 95%
+}
+
+input, select{
+	height: 50px;
+}
+
+textarea{
+	height: 100px;
+}
+
+#submit {
+	background: rgba(39, 208, 127,.5);
+	float: right;
+	font-weight: bold;
+	margin: 10px;
+	max-width: 100%;
+	height: 50px
+	
+}
+
+
+
+#radio1, #radio2, #radio3, #check1, #check2, #check3{
+	float:right;
+	clear: both;
+	
+}
 /*-------- Results Styles --------*/
 
 
 /* 
 
-	The results container should also fill the width of its container, but only up to 500px.
+	The results container should also fill the width of its container, but only up to 500px. *
 
-	The results container should have a background color of #C8DBB3, and comfortable padding around the text.
+	The results container should have a background color of #C8DBB3, and comfortable padding around the text. *
 
 */
 
+.results {
+	background: #C8DBB3;
+	width: fill;
+	max-width: 500px;
+	clear: both;
+	padding: 10px;
+	display: inline-block;
+}
+
+
+p {
+	margin: 5px;
+}

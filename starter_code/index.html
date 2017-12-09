@@ -2,19 +2,20 @@
 <html>
 <head>
 	<title>CSS HTML Forms Lab</title>
+	<link href="https://fonts.googleapis.com/css?family=Proza+Libre:400,500,700" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<section id="main">
 		<section class="formSection container">
 			<form class="form" method="GET">
-					<h1>My Dev Story</h1>
+					<h1><b>My Dev Story</b></h1>
 					<div class="row formGroup">
-					    <label for="name">Name:</label>
+					    <label for="name">Name:</label><br>
 					    <input id="name" name="name" >
 				    </div>
 					<div class="row formGroup">
-				    	<label for="verb-1">Verb:</label>
+				    	<label for="verb-1">Verb:</label><br>
 				    	<select id="verb-1" name="verb-1">
 				    		<optgroup label="Cautious">
 					    		<option>consider</option>
@@ -34,12 +35,12 @@
 				    	</select>
 					</div>
 					<div class="row formGroup">
-				    	<label for="mission">Misison Statement:</label>
+				    	<label for="mission">Misison Statement:</label><br>
 				    	<textarea id="mission" name="mission"></textarea>
 					</div>
 
 					<div class="row formGroup">
-						<label for="radioButtons">Sentiment:</label>
+						<label for="radioButtons">Sentiment:</label><br>
 						<div class="radioButtons">
 							<div class="radio">
 							  <input id="radio1" type="radio" name="sentiment" value="dubious"> 
@@ -47,7 +48,7 @@
 							</div>
 							<div class="radio">
 								<input id="radio2" type="radio" name="sentiment" value="mildly concerned">
-								<label for="radio2">mildly concerned</label> 
+								<label for="radio2">mildly concerned</label>
 							</div>
 							<div class="radio">
 								<input id="radio3" type="radio" name="sentiment" value="already perfect"> 
@@ -57,7 +58,7 @@
 					</div>
 					
 					<div class="row formGroup">
-				    	<label for="noun-1">Noun:</label>
+				    	<label for="noun-1">Noun:</label><br>
 				    	<input id="noun-1" name="noun-1">
 					</div>
 					<div class="row formGroup">
@@ -65,22 +66,22 @@
 						<label for="checkboxes">Sentiment:</label>
 						<div class="checkboxes">
 							<div class="check">
-							  <input id="check1" type="checkbox" name="adjective-2" value="powerful"> 
+							  <input id="check1" type="checkbox" name="adjective-2" value=" powerful"> 
 							  <label for="check1">powerful</label>
 							</div>
 							<div class="check">
-								<input id="check2" type="checkbox" name="adjective-2" value="honed">
+								<input id="check2" type="checkbox" name="adjective-2" value=" honed">
 								<label for="check2">honed</label> 
 							</div>
 							<div class="check">
-								<input id="check3" type="checkbox" name="adjective-2" value="dedicated"> 
+								<input id="check3" type="checkbox" name="adjective-2" value=" dedicated"> 
 								<label for="check3">dedicated</label>
 							</div>
 				    	</div>
 
 					</div>
 					<div class="row formGroup">
-				    	<label for="noun-2">Noun:</label>
+				    	<label for="noun-2">Noun:</label><br>
 				    	<input id="noun-2" name="noun-2">
 					</div>
 					<div class="row formGroup">
@@ -98,76 +99,78 @@
 
 		$().ready(function(){
 			console.log("ready!");
-		});
 
 
-		var main = $('#main');
-		function makeResults() {
+			var main = $('#main');
+			function makeResults() {
 
-			$( "<section class='container results'><h1>A True Story:</h1>" ).appendTo(main);
+				$( "<div class='container results'><h1>A True Story:</h1></div>" ).appendTo(main);
 
-			// JS Native:
-			// var results = document.createElement('section');
-			// results.innerHTML = '<h1>' + 'A true story:' + '</h1>';
-			// results.className = 'container results';
-			// main.appendChild(results);
+				// JS Native:
+				// var results = document.createElement('section');
+				// results.innerHTML = '<h1>' + 'A true story:' + '</h1>';
+				// results.className = 'container results';
+				// main.appendChild(results);
 
-		}
+			}
 
-		$("form").on("submit", function(event){
+			$("form").on("submit", function(event){
 
-		    // Stop the form from submitting
-		    event.preventDefault();
-	    	// Run the 'makeResults' function seen above
-	    	makeResults();
+			    // Stop the form from submitting
+			    event.preventDefault();
+		    	// Run the 'makeResults' function seen above
+		    	makeResults();
+		    	$(this).off('submit');
 
-			// Var for input values
-	    	var $name = $("#name").val();
-			var $verb1 = $("#verb-1 option:selected").val();
-			var $mission = $("#mission").val();
-			var $radio = $("input[name=sentiment]:checked").val();
-			var $noun1 = $("#noun-1").val();
-			var $checkboxes = $("#checkboxes").val();
-			var $noun2 = $("#noun-2").val();
-			//Struggeling to get radio and checkbockes
-
-			localStorage.setItem("name", $name);
-			localStorage.setItem("verb1", $verb1);
-			localStorage.setItem("mission", $mission);
-			localStorage.setItem("radio", $radio);
-			localStorage.setItem("noun1", $noun1);
-			localStorage.setItem("checkboxes", $checkboxes);
-			localStorage.setItem("noun2", $noun2);
-		
-
-		console.log($name + $radio +"Hello" + $("#name").val());
-
-
-
-	    	//makeResults();
-	    	/*
+				// Var for input values
+		    	var $name = $("#name").val();
+				var $verb1 = $("#verb-1 option:selected").val();
+				var $mission = $("#mission").val();
+				var $radio = $("input[name=sentiment]:checked").val();
+				var $noun1 = $("#noun-1").val();
+				var $noun2 = $("#noun-2").val();
+				var $checkboxes = [];
+				$('input[name="adjective-2"]:checked').map(function(){
+	    			$checkboxes.push($(this).val());
+					console.log($checkboxes);
+					});
 			
-				For each value entered into a form input, add the input to the corresponding sentence, then append the text into the results section:
+				//Local Storage
 
-				"Once upon a time there was a Developer named NAME."
+				localStorage.setItem("name", $name);
+				localStorage.setItem("verb1", $verb1);
+				localStorage.setItem("mission", $mission);
+				localStorage.setItem("radio", $radio);
+				localStorage.setItem("noun1", $noun1);
+				localStorage.setItem("checkboxes", $checkboxes);
+				localStorage.setItem("noun2", $noun2);
+			
 
-				"NAME came to General Asssembly to VERB1 the great mountain of programming knowledge."
-
-				""MISSION", NAME shouted."
-	
-				"Though SENTIMENT, NAME was able to overcome all obstacles with the power of their NOUN."
-
-				"In the end, their success can be contributed entirely to their " + ADJECTIVE2[list each one checked, comma-separated] + NOUN2."
-
-	    	*/ 
+			console.log($checkboxes);
 
 
-	    	$('.container.results').append("<p>Once upon a time there was a Developer named " + $name + ".</p>");
-			$('.container.results').append("<p>" + $name + " came to General Assembly to " + $verb1 + " the great mountain of programming knowledge.</p>");
-			$('.container.results').append("<p>" + $mission + ", " + $name + " shouted.</p>");
-			$('.container.results').append("<p>Though " + $radio + ", " + $name + " was able to overcome all obstacles with the power of their " + $noun1 + ".<p>");
-			$('.container.results').append("<p>In the end, their success can be contributed entirely to their " + $checkboxes + " " + $noun2 + ".<p>");
 
+		    	//makeResults();
+		    	/*
+				
+					For each value entered into a form input, add the input to the corresponding sentence, then append the text into the results section:
+
+					"Once upon a time there was a Developer named NAME."
+
+					"NAME came to General Asssembly to VERB1 the great mountain of programming knowledge."
+
+					""MISSION", NAME shouted."
+		
+					"Though SENTIMENT, NAME was able to overcome all obstacles with the power of their NOUN."
+
+					"In the end, their success can be contributed entirely to their " + ADJECTIVE2[list each one checked, comma-separated] + NOUN2."
+
+		    	*/ 
+
+
+		    	$('.results').append("<p>Once upon a time there was a Developer named " + $name + ". "+ $name + " came to General Assembly to " + $verb1 + " the great mountain of programming knowledge. "+ $mission + ", " + $name + " shouted. Though " + $radio + ", " + $name + " was able to overcome all obstacles with the power of their " + $noun1 + "In the end, their success can be contributed entirely to their" + $checkboxes + " " + $noun2 + ".<p>");
+
+			});
 		});
 	</script>
 
